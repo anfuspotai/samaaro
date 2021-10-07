@@ -1,18 +1,20 @@
-$(".selector").on("change", function (event) {
-  //get the previous value. when selecting for the first time the value will be undefined.
-  let preValue = $(this).data("previous");
+$(document).ready(function () {
+  $(".selector").on("change", function (event) {
+    //get the previous value. when selecting for the first time the value will be undefined.
+    let preValue = $(this).data("previous");
 
-  //if the previous value is not undefined, show the values in other selectors.
-  if (preValue)
-    $(".selector").not(this).find(`option[value=" ${preValue} "]`).show();
+    //if the previous value is not undefined, show the values in other selectors.
+    if (preValue)
+      $(".selector").not(this).find(`option[value=" ${preValue} "]`).show();
 
-  let newValue = $(this).val();
+    let newValue = $(this).val();
 
-  // saving the selected value as previous for the next change (preValue).
-  $(this).data("previous", newValue);
+    // saving the selected value as previous for the next change (preValue).
+    $(this).data("previous", newValue);
 
-  //hiding the value selected from the other selectors
-  $(".selector").not(this).find(`option[value="${newValue}"]`).hide();
+    //hiding the value selected from the other selectors
+    $(".selector").not(this).find(`option[value="${newValue}"]`).hide();
+  });
 });
 
 // Form event
