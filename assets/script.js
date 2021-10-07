@@ -4,8 +4,7 @@ $(document).ready(function () {
     let preValue = $(this).data("previous");
 
     //if the previous value is not undefined, show the values in other selectors.
-    if (preValue)
-      $(".selector").not(this).find(`option[value=" ${preValue} "]`).show();
+    $(".selector").not(this).find(`option[value="${preValue}"]`).show();
 
     let newValue = $(this).val();
 
