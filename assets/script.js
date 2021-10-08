@@ -16,6 +16,24 @@ $(document).ready(function () {
   });
 });
 
+//javascript
+
+function selectOption(selectedOption, currentSelect) {
+  document.querySelectorAll("." + selectedOption).forEach((currentSelect) => {
+    if (currentSelect.id != selectedOption + currentSelect) {
+      currentSelect.hidden = true;
+    }
+  });
+
+  let preValue = document.getElementById("select" + currentSelect).preValue;
+  if (preValue) {
+    document.querySelectorAll("." + preValue).forEach((showOption) => {
+      showOption.hidden = false;
+    });
+  }
+  document.getElementById("select" + currentSelect).preValue = selectedOption;
+}
+
 // Form event
 $("#select-form").submit(function (event) {
   event.preventDefault(); //prevent submitting
