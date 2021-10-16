@@ -16,25 +16,25 @@ $(document).ready(function () {
   });
 });
 
-//javascript
+//javascript used in index2
 
-function selectOption(selectedOption, currentSelect) {
-  document.querySelectorAll("." + selectedOption).forEach((currentSelect) => {
-    if (currentSelect.id != selectedOption + currentSelect) {
-      currentSelect.hidden = true;
+function selectOption(currentSelect) {
+  document.querySelectorAll(`.${currentSelect.value}`).forEach((hideOption) => {
+    if (hideOption.id != currentSelect.value + currentSelect.id) {
+      hideOption.hidden = true;
     }
   });
 
-  let preValue = document.getElementById("select" + currentSelect).preValue;
+  let preValue = currentSelect.preValue;
   if (preValue) {
     document.querySelectorAll("." + preValue).forEach((showOption) => {
       showOption.hidden = false;
     });
   }
-  document.getElementById("select" + currentSelect).preValue = selectedOption;
+  currentSelect.preValue = currentSelect.value;
 }
 
-// Form event
+// Form event common for both indexes
 $("#select-form").submit(function (event) {
   event.preventDefault(); //prevent submitting
 
